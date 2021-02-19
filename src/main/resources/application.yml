@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/player_market
+    driverClassName: org.postgresql.Driver
+    username: player_market
+    password: player_market
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/db.changelog-master.xml
+    enabled: true
