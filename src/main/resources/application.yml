@@ -12,3 +12,8 @@ spring:
     contexts: dev
     change-log: classpath:db/db.changelog-master.xml
     enabled: true
+server:
+  servlet:
+    contextPath: /api
+
+transfer-fee-constant: 100_000

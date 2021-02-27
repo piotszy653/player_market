@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="Pioter (generated)" id="1614426911429-1">
+        <createTable tableName="player">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="playerPK"/>
+            </column>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="career_beginning" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-2">
+        <createTable tableName="team">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="teamPK"/>
+            </column>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="config_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-3">
+        <createTable tableName="team_config">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="team_configPK"/>
+            </column>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_commission_percentage" type="numeric(5, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-4">
+        <addUniqueConstraint columnNames="uuid" constraintName="UC_PLAYERUUID_COL" tableName="player"/>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-5">
+        <addUniqueConstraint columnNames="uuid" constraintName="UC_TEAMUUID_COL" tableName="team"/>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-6">
+        <addUniqueConstraint columnNames="uuid" constraintName="UC_TEAM_CONFIGUUID_COL" tableName="team_config"/>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-7">
+        <addUniqueConstraint columnNames="config_id" constraintName="UK_t9gfht785o20xs5xf6dvdnacd" tableName="team"/>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-8">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="player" constraintName="FKdvd6ljes11r44igawmpm1mc5s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team" validate="true"/>
+    </changeSet>
+    <changeSet author="Pioter (generated)" id="1614426911429-9">
+        <addForeignKeyConstraint baseColumnNames="config_id" baseTableName="team" constraintName="FKer9pmhk50ru6yqm1n8xbvw41u" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team_config" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

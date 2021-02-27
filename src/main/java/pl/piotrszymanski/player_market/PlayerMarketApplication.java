@@ -14,8 +14,7 @@ public class PlayerMarketApplication {
     }
 
     @PostConstruct
-    public void init(){
-        // Setting Spring Boot SetTimeZone
+    public void init() {
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 }
